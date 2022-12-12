@@ -1,0 +1,20 @@
+# keyshare
+cipher key share REST API
+
+
+MyMAC@BRUCELEE-M-114950 ~ % curl -X POST http://localhost:7484/2component/"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+Master Key :  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 256 Bit, 64 String(Hex), KCV(AES) D44800
+Decoded Byte Array: [170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170 170]
+Decoded String: ��������������������������������
+Base64 Encoding: qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqo=
+Component 1 :  08418c84c139c579b74ca3cb685f8802bc4f2c743aac6d640196a56192debbc6 256 Bit, 64 String(Hex), KCV(AES) 835899
+Decoded Byte Array: [8 65 140 132 193 57 197 121 183 76 163 203 104 95 136 2 188 79 44 116 58 172 109 100 1 150 165 97 146 222 187 198]
+Decoded String:A���9�y�L��h_��O,t:�md��a�޻�
+Base64 Encoding: CEGMhME5xXm3TKPLaF+IArxPLHQ6rG1kAZalYZLeu8Y=
+Component 2 :  a2eb262e6b936fd31de60961c2f522a816e586de9006c7ceab3c0fcb3874116c 256 Bit, 64 String(Hex), KCV(AES) 51C405
+Decoded Byte Array: [162 235 38 46 107 147 111 211 29 230 9 97 194 245 34 168 22 229 134 222 144 6 199 206 171 60 15 203 56 116 17 108]
+Decoded String: ��&.k�o��	a��"��ސ�Ϋ<�8tl
+Base64 Encoding: ousmLmuTb9Md5glhwvUiqBblht6QBsfOqzwPyzh0EWw=
+
+MyMAC@BRUCELEE-M-114950 ~ %
+
