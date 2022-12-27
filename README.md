@@ -3,6 +3,9 @@ cipher key share REST API
 
 
 kakao_bank@BRUCELEE-M-114950 ~ % curl -X POST http://localhost:7484/2component/"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+
+
+
 Master Key : AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, 256 Bit, 64 String(Hex), KCV(AES) : D44800
 Base64 Encoding: qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqo=
 
