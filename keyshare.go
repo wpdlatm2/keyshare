@@ -117,30 +117,55 @@ func c2(rw http.ResponseWriter, req *http.Request) {
 
 	mkeykcv, err3 := KCV(mkeyByteArray)
 	c1kcv, err4 := KCV(c1ByteArray)
+        mkeybit := mkeylen*8/2
 
-	fmt.Println("Master Key : ", mkeyhex, mkeylen*8/2, "Bit,", mkeylen, "String(Hex),", "KCV(AES)", mkeykcv)
-	//	fmt.Printf("Master Key : %s Bit, %s, %s String(Hex), KCV(AES) %s", mkeylen * 8 / 2, mkeyhex, mkeylen, mkeykcv)
-	fmt.Printf("Decoded Byte Array: %v \nDecoded String: %s \n", mkeyByteArray, mkeyByteArray)
-	fmt.Printf("Base64 Encoding: %s \n\n", mkeyb64)
+//      fmt.Fprintf(rw, "Master Key")
 
-	fmt.Println("Component 1 : ", c1hex, len(c1hex)*8/2, "Bit,", len(c1hex), "String(Hex),", "KCV(AES)", c1kcv)
-	fmt.Printf("Decoded Byte Array: %v \nDecoded String: %s \n", c1ByteArray, c1ByteArray)
-	fmt.Printf("Base64 Encoding: %s \n\n", c1b64)
+        fmt.Println("Master Key : ", mkeyhex, mkeylen*8/2, "Bit,", mkeylen, "String(Hex),", "KCV(AES)", mkeykcv)
+        fmt.Printf("Decoded Byte Array: %v \n", mkeyByteArray)
+//      fmt.Printf("Decoded String: %s \n", mkeyByteArray)
+        fmt.Printf("Base64 Encoding: %s \n\n", mkeyb64)
 
-	c2ByteArray := xor2byte(mkeyByteArray, c1ByteArray)
-	c2b64 := b64.StdEncoding.EncodeToString(c2ByteArray)
+        fmt.Fprintf(rw, "Master Key : %s, %d Bit, %d String(Hex), KCV(AES) : %s \n", mkeyhex, mkeybit, mkeylen, mkeykcv)
+        fmt.Fprintf(rw, "Decoded Byte Array: %v \n", mkeyByteArray)
+//      fmt.Fprintf(rw, "Decoded String: %s \n", mkeyByteArray)
+        fmt.Fprintf(rw, "Base64 Encoding: %s \n\n", mkeyb64)
 
-	c2hex := hex.EncodeToString(c2ByteArray)
-	c2kcv, err4 := KCV(c2ByteArray)
 
-	fmt.Println("Component 2 : ", c2hex, len(c2hex)*8/2, "Bit,", len(c2hex), "String(Hex),", "KCV(AES)", c2kcv)
-	fmt.Printf("Decoded Byte Array: %v \nDecoded String: %s \n", c2ByteArray, c2ByteArray)
-	fmt.Printf("Base64 Encoding: %s \n\n", c2b64)
+        fmt.Println("Component 1 : ", c1hex, len(c1hex)*8/2, "Bit,", len(c1hex), "String(Hex),", "KCV(AES)", c1kcv)
+        fmt.Printf("Decoded Byte Array: %v \n", c1ByteArray)
+//      fmt.Printf("Decoded String: %s \n", c1ByteArray)
+        fmt.Printf("Base64 Encoding: %s \n\n", c1b64)
 
-	//	fmt.Println("Hex String: ", mkeyhex)
-	//	fmt.Println("Hex String Length: ", mkeylen)
+c1len := len(c1hex)
+c1bit := c1len*8/2
 
-	//	decodedByteArray, err := hex.DecodeString(mkeyhex)
+        fmt.Fprintf(rw, "Component 1 : %s, %d Bit, %d String(Hex), KCV(AES) : %s \n", c1hex, c1bit, c1len, c1kcv)
+        fmt.Fprintf(rw, "Decoded Byte Array: %v \n", c1ByteArray)
+//        fmt.Fprintf(rw, "Decoded String: %s \n", c1ByteArray)
+        fmt.Fprintf(rw, "Base64 Encoding: %s \n\n", c1b64)
+
+
+        c2ByteArray := xor2byte(mkeyByteArray, c1ByteArray)
+        c2b64 := b64.StdEncoding.EncodeToString(c2ByteArray)
+
+        c2hex := hex.EncodeToString(c2ByteArray)
+        c2kcv, err4 := KCV(c2ByteArray)
+
+        c2len := len(c2hex)
+        c2bit := c2len*8/2
+
+        fmt.Println("Component 2 : ", c2hex, len(c2hex)*8/2, "Bit,", len(c2hex), "String(Hex),", "KCV(AES)", c2kcv)
+        fmt.Printf("Decoded Byte Array: %v \n", c2ByteArray)
+//      fmt.Printf("Decoded String: %s \n", c2ByteArray)
+        fmt.Printf("Decoded Byte Array: %v \nDecoded String: %s \n", c2ByteArray, c2ByteArray)
+        fmt.Printf("Base64 Encoding: %s \n\n", c2b64)
+
+
+        fmt.Fprintf(rw, "Component 2 : %s, %d Bit, %d String(Hex), KCV(AES) : %s \n", c2hex, c2bit, c2len, c2kcv)
+        fmt.Fprintf(rw, "Decoded Byte Array: %v \n", c2ByteArray)
+//        fmt.Fprintf(rw, "Decoded String: %s \n", c2ByteArray)
+        fmt.Fprintf(rw, "Base64 Encoding: %s \n\n", c2b64)
 
 	if err1 != nil {
 		fmt.Println("err1, Unable to convert hex to byte. ", err1)
