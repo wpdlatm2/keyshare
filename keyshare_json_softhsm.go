@@ -35,9 +35,15 @@ func pkcs11random(n int) (string, error) {
 
 	pin := "user"
 
-	// Init PKCS
+	// Init PKCS for Linux 
 	//	p := pkcs11.New("/usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so")
-	p := pkcs11.New("D:\\SoftHSM2\\lib\\softhsm2-x64.dll")
+	
+	// Init PKCS for Windows
+	// p := pkcs11.New("D:\\SoftHSM2\\lib\\softhsm2-x64.dll")
+	
+	// Init PKCS for MACOS
+	p := pkcs11.New("/usr/local/Cellar/softhsm/2.6.1/lib/softhsm/libsofthsm2.so")
+	
 	err := p.Initialize()
 	if err != nil {
 		panic(err)
